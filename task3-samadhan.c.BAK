@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+clrscr();
+float phy,chem,math,eng,hindi,total,per;
+printf("\n Enter the five subject marks of a student");
+scanf("%f%f%f%f%f",&phy,&chem,&math,&eng,&hindi);
+total=phy+chem+math+eng+hindi;
+per=(total/500.0)*100;
+printf("\nTotal=%f,percentage=%.2f",total,per);
+getch();
+}
