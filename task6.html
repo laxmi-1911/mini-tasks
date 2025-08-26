@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Card</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .card {
+        width: 300px;
+        padding: 20px;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      .card img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+      }
+      .card h2 {
+        margin: 5px 0;
+      }
+      .card h4 {
+        margin: 5px 0;
+        color: gray;
+      }
+      .card p {
+        font-size: 14px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React and ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Our React Code -->
+    <script type="text/babel">
+      function ProfileCard({ name, profession, bio, image }) {
+        return (
+          <div className="card">
+            <img src={image} alt={name} />
+            <h2>{name}</h2>
+            <h4>{profession}</h4>
+            <p>{bio}</p>
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <ProfileCard
+            name="Anshul Sahu"
+            profession="Web Developer"
+            bio="Passionate about coding, learning React, and building cool projects."
+            image="https://i.pravatar.cc/150?img=32"
+          />
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
