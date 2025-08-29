@@ -1,0 +1,37 @@
+import React, { useState } from 'react';
+function App() {
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState('');
+
+  return (
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h1>Day 7 Mini Task: State Management</h1>
+      
+      {/* --- Counter Section --- */}
+      <div style={{ marginBottom: '40px', border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
+        <h2>Counter</h2>
+        <p>Current count: <strong>{count}</strong></p>
+        <button onClick={() => setCount(count + 1)} style={{ marginRight: '10px' }}>Increment</button>
+        <button onClick={() => setCount(count - 1)} style={{ marginRight: '10px' }}>Decrement</button>
+        <button onClick={() => setCount(0)}>Reset</button>
+      </div>
+
+      <hr />
+
+      {/* --- Live Text Preview Section --- */}
+      <div style={{ marginTop: '40px', border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
+        <h2>Live Text Preview</h2>
+        <input
+          type="text"
+          placeholder="Type something here..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          style={{ width: '80%', padding: '8px', fontSize: '16px' }}
+        />
+        <p>Live Preview: <strong>{text}</strong></p>
+      </div>
+    </div>
+  );
+}
+
+export default App;
