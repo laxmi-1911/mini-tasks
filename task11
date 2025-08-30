@@ -1,0 +1,76 @@
+
+const express = require('express');
+const app = express();
+const PORT = 3000;
+app.use(express.json());
+let students = [
+  { id: 1, name: 'Anshul Sahu', age: 19, course: 'Computer Science' },
+  { id: 2, name: 'Priya Sharma', age: 21, course: 'Mechanical Engineering' },
+  { id: 3, name: 'Rahul Gupta', age: 23, course: 'Civil Engineering' }
+];
+const generateId = () => {
+  const maxId = students.length > 0
+    ? Math.max(...students.map(student => student.id))
+    : 0;
+  return maxId + 1;
+};
+app.get('/students', (req, res) => {
+  res.status(200).json(students);
+});
+app.get('/students/:id', (req, res) => {
+  const studentId = parseInt(req.params.id);
+  const student = students.find(s => s.id === studentId);
+
+  if (!student) {
+    return res.status(404).json({ message: 'A student with the given ID was not found.' });
+  }
+
+  res.status(200).json(student);
+});
+app.post('/students', (req, res) => {
+  const { name, age, course } = req.body;
+
+  if (!name || !age || !course) {
+    return res.status(400).json({ message: 'Please provide name, age, and course for the new student.' });
+  }
+
+  const newStudent = {
+    id: generateId(),
+    name,
+    age,
+    course
+  };
+
+  students.push(newStudent);
+  res.status(201).json({ message: 'Student successfully added.', student: newStudent });
+});
+app.put('/students/:id', (req, res) => {
+  const studentId = parseInt(req.params.id);
+  const student = students.find(s => s.id === studentId);
+
+  if (!student) {
+    return res.status(404).json({ message: 'Student not found. Cannot update.' });
+  }
+
+  const { name, age, course } = req.body;
+
+  if (name) student.name = name;
+  if (age) student.age = age;
+  if (course) student.course = course;
+
+  res.status(200).json({ message: 'Student details updated.', student });
+});
+app.delete('/students/:id', (req, res) => {
+  const studentId = parseInt(req.params.id);
+  const initialLength = students.length;
+  students = students.filter(s => s.id !== studentId);
+
+  if (students.length === initialLength) {
+    return res.status(404).json({ message: 'The specified student ID does not exist.' });
+  }
+
+  res.status(200).json({ message: 'Student successfully removed.' });
+});
+app.listen(PORT, () => {
+  console.log(Server is running at http://localhost:${PORT});
+});
