@@ -1,0 +1,49 @@
+h3{
+    color:aliceblue
+}
+
+body{
+    background-color: #ff9000;
+}
+*{
+    color:F6EFD2;
+}
+h3{
+    color: #000000;
+}
+body{
+    background-color:#34495e ;
+}
+.myclass{
+    color:#000000 ;
+}
+body{
+    text-align: left;
+}
+
+a{
+    text-decoration: none;
+}
+u{
+    color: white;
+}
+.section{
+    color:#355c7d ;
+}
+p{
+    color: aliceblue;
+}
+.submit{
+    background-color: rgb(43, 41, 41);
+}
+img{
+    border-radius: 50%;
+}
+.heading{
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ddd;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
